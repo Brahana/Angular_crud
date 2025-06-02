@@ -15,25 +15,20 @@ export class AppComponent {
   //completedIndex:number|null=null;
   completedItems:string[]=[];
 
-  save()
-  {
-  if(this.editIndex!=null)
-  {
-    this. pendingItems=this.pendingItems.map((val,i)=>{
-      if(this.editIndex==i)
-      {
-        val=this.name;
-      }
-      return val;
-    })
+ save() {
+  if (this.name.trim() !== '') {
+    if (this.editIndex !== null) {
+      this.pendingItems = this.pendingItems.map((val, i) => {
+        if (i === this.editIndex) return this.name.trim();
+        return val;
+      });
+    } else {
+      this.pendingItems.push(this.name.trim());
+    }
   }
-  else
-  { 
-     this.pendingItems.push(this.name)
-  }
-  this.editIndex=null;
-  // Reset the input field after saving
-  this.name="";
+
+  this.editIndex = null;
+  this.name = '';
 }
 
   
@@ -41,6 +36,7 @@ export class AppComponent {
 
   edit(editIndex:number)
   {
+    
     this.editIndex=editIndex
     const editData=this.pendingItems.find((val,i)=>{
       return editIndex==i;

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5 pt-5" >
   <div class="row">
     <h1>Simple CRUD</h1>
       <div class="col-4">
@@ -22,7 +22,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-6 mt-2">
+    <div  *ngIf="completedItems.length>0" class="col-6 mt-2">
       <h3>Completed List</h3>
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let item of completedItems">{{item}}</li>
